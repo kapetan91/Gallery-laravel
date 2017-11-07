@@ -3,13 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Gallery;
+use App\User;
 
 class Comment extends Model
 {
-    protected $fillable = ['body', 'image id'];
+    protected $fillable = ['body', 'user_id', 'gallery_id'];
 
-    public function postComments()
+    public function user()
     {
-    	return $this->belongsTo(Image::class);
+    	return $this->belongsTo(User::class);
+    }
+
+    public function gallery()
+    {
+    	return $this->belongsTo(Gallery::class);
     }
 }

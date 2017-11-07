@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +28,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function gallery()
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

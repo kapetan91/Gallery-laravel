@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use App\Gallery;
+use App\Comment;
 
 class CommentsController extends Controller
 {

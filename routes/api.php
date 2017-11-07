@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/login', 'LoginController@authenticate');
+Route::post('/register', 'RegisterController@register');
+Route::post('/comments' , "CommentController@create");
+
+Route::get('/galleries/users/{user}', 'GalleryController@personalGalleries');
+Route::get('/galleries/{gallery}/comments', 'CommentController@index');
+Route::get('/', 'GalleryController@index');
+
+Route::resource('/galleries', 'GalleryController');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
