@@ -21,4 +21,29 @@ class CommentsController extends Controller
 
     	return back();
     }
+
+    public function create()
+    {
+
+    }
+
+    public function show(Comment $comment)
+    {
+
+    }
+
+    public function edit(Comment $comment)
+    {
+
+    }
+
+    public function update(Request $request, Comment $comment)
+    {
+
+    }
+
+    public function destroy(Comment $comment)
+    {
+        
+    }
 }

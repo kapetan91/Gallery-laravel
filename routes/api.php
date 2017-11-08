@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/login', 'LoginController@authenticate');
-Route::post('/register', 'RegisterController@register');
+Route::post('/login', 'Auth/LoginController@authenticate');
+Route::middleware('jwt')->post('/register', 'Auth/RegisterController@register');
 Route::post('/comments' , "CommentController@create");
 
 Route::get('/galleries/users/{user}', 'GalleryController@personalGalleries');
