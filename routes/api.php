@@ -13,20 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 
 Route::post('/login', 'Auth/LoginController@authenticate');
-Route::middleware('jwt')->post('/register', 'Auth/RegisterController@register');
-Route::post('/comments' , "CommentController@create");
+Route::post('/register', 'Auth/RegisterController@register');
+Route::middleware('jwt')->post('/comments' , "CommentsController@create");
 
-Route::get('/galleries/users/{user}', 'GalleryController@personalGalleries');
-Route::get('/galleries/{gallery}/comments', 'CommentController@index');
-Route::get('/', 'GalleryController@index');
+Route::middleware('jwt')->resource('/galleries', 'GalleryController');
 
-Route::resource('/galleries', 'GalleryController');
+Route::middleware('jwt')->get('/galleries/users/{user}', 'GalleryController@personalGalleries');
+
+Route::middleware('jwt')->get('/galleries/{gallery}/comments', 'CommentsController@index');
+
+Route::middleware('jwt')->get('/', 'GalleryController@index');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
