@@ -7,7 +7,7 @@ use App\Gallery;
 
 class Image extends Model
 {
-    protected $fillable = ['image_url','gallery_id'];
+    protected $fillable = ['name', 'description', 'image_url','gallery_id'];
 
     public function gallery()
     {
