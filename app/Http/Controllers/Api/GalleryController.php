@@ -11,7 +11,7 @@ class GalleryController extends Controller
 {
     public function index()
     {
-    	return Gallery::all();
+    	return Gallery::with('user')->get();
     }
 
     public function create()
