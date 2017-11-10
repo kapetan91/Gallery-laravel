@@ -12,9 +12,15 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::auth();
+
+Route::post('/login', 'Auth\LoginController@authenticate');
+Route::post('/register', 'Auth\RegisterController@registration');
+
+
+
 Route::group(['namespace' => 'Api'], function () {
 	Route::get('/all-galleries', 'GalleryController@index');
+
 
 Route::group(['middleware' => 'jwt-auth'], function () {
 	Route::post('/comments', 'CommentsController@create');

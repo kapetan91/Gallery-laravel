@@ -12,6 +12,10 @@ class GalleriesSeeder extends Seeder
      */
     public function run()
     {
-       factory(Gallery::class,150)->create();
+       factory(Gallery::class, 30)->create()->each(function($g){
+       	$g->images()->save(factory('App\Image')->make());
+       	$g->comments()->save(factory('App\Comment')->make());
+       	$g->user()->save(factory('App\User')->make());
+       });
     }
 }
