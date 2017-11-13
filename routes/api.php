@@ -20,12 +20,15 @@ Route::post('/register', 'Auth\RegisterController@registration');
 
 Route::group(['namespace' => 'Api'], function () {
 	Route::get('/all-galleries', 'GalleryController@index');
+	Route::get('/galeries/{id}, GalleryController@show');
 
 
 Route::group(['middleware' => 'jwt-auth'], function () {
 	Route::post('/comments', 'CommentsController@create');
 	Route::get('/galleries/{gallery}/comments', 'CommentsController@store');
 	Route::get('/', 'GalleryController@index');
+	Route::delete('/comments/{id}', 'CommentsController@destroy');
+
 	});
 });
 
